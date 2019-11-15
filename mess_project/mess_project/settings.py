@@ -20,12 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f23!!pzz^#=t8hsh1$j7*46lgrqz)!cmvvwzfn8*@nno8*#ql)'
+SECRET_KEY = '$x@jtkjo@nl+=(@sm0gg!o#@9_vjck81@=*_@#56$*&p+at2g%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '192.168.80.132',
+]
 
 
 # Application definition
@@ -37,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mess',
+    'users',
+    'crispy_forms',
+    'manager',
+    'djmoney',
 ]
 
 MIDDLEWARE = [
@@ -118,3 +125,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'mess-home'
+
+LOGIN_URL = 'login'

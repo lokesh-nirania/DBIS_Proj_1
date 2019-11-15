@@ -1,0 +1,15 @@
+{% extends "mess/base.html" %}
+{% block content %}
+    {% for feedback in feedbacks %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ feedback.roll_number }}</a>
+              <small class="text-muted">{{ feedback.date_created }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ feedback.title }}</a></h2>
+            <p class="article-content">{{ feedback.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

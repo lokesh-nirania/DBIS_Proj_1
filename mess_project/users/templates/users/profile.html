@@ -1,0 +1,20 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+      <div class="media">
+        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        <div class="media-body">
+          <h2 class="account-heading">{{ student.name }}</h2>
+          <h2 class="account-heading">{{ manager.name }}</h2>
+          <p class="text-secondary">Username :- {{ user.username }}</p>
+          <p class="text-secondary">Email :- {{ user.email }}</p>
+          <p class="text-secondary">Your username type is {{ type }}</p>
+          {% if found == 0 %}
+            <h2 class="account-heading">Your username "{{ user.username }}" is neither registered as Student nor as Manager</h2>
+          {% endif %}
+        </div>
+      </div>
+      <!-- FORM HERE -->
+    </div>
+{% endblock content %}
