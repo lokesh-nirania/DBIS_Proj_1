@@ -1,0 +1,18 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Registered Students : {{ students.count }}</h1>
+    {% for student in students %}
+        <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+            <h2 class="account-heading">{{ student.name }}</h2>
+            <p class="text-secondary">Email :- {{ student.user.email }}</p>
+            <p class="text-secondary">Roll No :- {{ student.roll_number }}</p>
+            </div>
+        </div>
+            <!-- FORM HERE -->
+        </div>
+    {% endfor %}
+{% endblock content %}

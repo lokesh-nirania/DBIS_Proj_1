@@ -1,0 +1,75 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>This is Manager Home</h1>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'reg-staff' %}">Manage Staff</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'reg-staff' %}">Total Registered Staff</a></h2>
+        <p class="article-content">{{ staffs.count }}</p>
+      </div>
+    </article>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">Manage Billls</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="#">Last 3 Unpaid bills</a></h2>
+        <p class="article-content">Bills here</p>
+      </div>
+    </article>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">Manage Inventory</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="#">Last three Inventory Transaction</a></h2>
+        <p class="article-content">Put Inventory Transactions here</p>
+      </div>
+    </article>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">Expenses Summary</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="#">Total expenditure this semester</a></h2>
+        <p class="article-content">{{ expenses.count }}</p>
+      </div>
+    </article>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">Manage Feedbacks</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="#">Total Unresponded Feedbacks</a></h2>
+        <p class="article-content">{{ feedbacks.count }}</p>
+      </div>
+    </article>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">Manage Suppliers</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="#">Total Registered Suppliers</a></h2>
+        <p class="article-content">{{ suppliers.count }}</p>
+      </div>
+    </article>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'reg-stu' %}">View Students</a>
+          <small class="text-muted">Something here</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'reg-stu' %} ">Total Registered Students</a></h2>
+        <p class="article-content">{{ students.count }}</p>
+      </div>
+    </article>
+{% endblock content %}

@@ -26,7 +26,8 @@ SECRET_KEY = '$x@jtkjo@nl+=(@sm0gg!o#@9_vjck81@=*_@#56$*&p+at2g%'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '192.168.80.132',
+    'localhost',
+    '10.196.8.88',
 ]
 
 
@@ -42,7 +43,6 @@ INSTALLED_APPS = [
     'mess',
     'users',
     'crispy_forms',
-    'manager',
     'djmoney',
 ]
 

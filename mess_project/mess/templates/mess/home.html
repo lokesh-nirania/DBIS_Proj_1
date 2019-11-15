@@ -1,5 +1,8 @@
 {% extends "mess/base.html" %}
 {% block content %}
+{% if flag == True %}
+<h1>This is Student Home</h1>
+{% endif %}
     {% for feedback in feedbacks %}
         <article class="media content-section">
           <div class="media-body">

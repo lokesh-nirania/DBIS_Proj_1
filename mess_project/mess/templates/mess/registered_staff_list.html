@@ -1,0 +1,25 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Registered Staff : {{ staffs.count }}</h1>
+    {% for staff in staffs %}
+        <div class="content-section">
+        <div class="media">
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+            <h2 class="account-heading">{{ staff.name }}</h2>
+            <p class="text-secondary">Staff ID :- {{ staff.staff_id }}</p>
+            <p class="text-secondary">Designation :- {{ staff.designation }}</p>
+            <p class="text-secondary">Contact :- {{ staff.contact }}</p>
+            <p class="text-secondary">Salary :- {{ staff.salary }}</p>
+            <p class="text-secondary">Acc No :- {{ staff.acc_no }}</p>
+            <p class="text-secondary">Bank Name :- {{ staff.bank_name }}</p>
+            <p class="text-secondary">IFSC Code :- {{ staff.IFSC }}</p>
+            <p class="text-secondary">Address :- {{ staff.address }}</p>
+            <!-- <p class="text-secondary">Added By :- {{ staff.manager.name }}</p> -->
+            </div>
+        </div>
+            <!-- FORM HERE -->
+        </div>
+    {% endfor %}
+{% endblock content %}
