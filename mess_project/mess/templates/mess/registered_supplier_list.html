@@ -1,0 +1,28 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h4>  <a class="nav-item nav-link" href="{% url 'add_supplier' %}"><button>Add Supplier</button></a> </h4>
+<div class="content-section">
+        <div class="media">
+                <h2 class="account-heading"></h2>Registered Supplier : {{ suppliers.count }}   </h2>
+        </div>
+    </div>
+
+    {% for supplier in suppliers %}
+        <div class="content-section">
+            <div class="media">
+                <div class="media-body">
+                     <h2 class="account-heading">{{ supplier.name }}</h2>
+                        <p class="text-secondary">Supplier ID&emsp;&emsp; &emsp; :-&emsp; {{ supplier.sup_id }}<br>
+                                        Contact     &emsp;&emsp;&emsp;    :-&emsp; {{ supplier.contact }}<br>
+                                        Address      &emsp;&emsp;&emsp;    :-&emsp; {{ supplier.address }}
+                                        <form method='POST'  >
+                                                {% csrf_token %}
+                                                <input type="hidden" name="sup_id" value="{{ supplier.sup_id }}">
+                                                <input type="submit" value="DELETE" style="float: right;">
+                        </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock content %}

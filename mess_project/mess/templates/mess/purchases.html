@@ -1,0 +1,24 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h4>  <a class="nav-item nav-link" href="{% url 'add_purchase' %}"><button>Add Purchases</button></a>
+
+    {% for purchase in purchases|dictsortreversed:"bill_id.date" %}
+        <div class="content-section">
+            <div class="media">
+                <div class="media-body">
+                     <h2 class="account-heading">{{ purchase.bill_id.date }}</h2>
+                        <p class="text-secondary">Purchase ID&emsp;&emsp;  :-&emsp; {{ purchase.pur_id }}<br>
+                                        Supplier &emsp;&emsp; &emsp;     :-&emsp; {{ purchase.sup_id.name }}<br>
+                                        Bill Id     &emsp; &emsp; &emsp;&emsp;    :-&emsp; {{ purchase.bill_id }}<br>
+                                        Item name &emsp; &emsp;    :-&emsp; {{ purchase.item_id.name }}<br>
+                                        Item ID &emsp; &emsp;&emsp;&emsp;:-&emsp; {{ purchase.item_id.item_id }}<br>
+                                        Quantity       &emsp; &emsp;&emsp;   :-&emsp; {{purchase.quantity}}<br>
+                                        Amount &emsp; &emsp; &emsp; :-&emsp; {{ purchase.amount }}<br>
+                                        </p>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    
+{% endblock content %}

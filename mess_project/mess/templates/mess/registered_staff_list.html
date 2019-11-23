@@ -1,25 +1,33 @@
 {% extends "mess/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Registered Staff : {{ staffs.count }}</h1>
+<h4>  <a class="nav-item nav-link" href="{% url 'add_staff' %}"><button>Add Staff</button></a> </h4>
+    <div class="content-section">
+        <div class="media">
+                <h2 class="account-heading"></h2>Registered Staff : {{ staffs.count }}  </h2>
+        </div>
+    </div>
     {% for staff in staffs %}
         <div class="content-section">
-        <div class="media">
-            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-            <div class="media-body">
-            <h2 class="account-heading">{{ staff.name }}</h2>
-            <p class="text-secondary">Staff ID :- {{ staff.staff_id }}</p>
-            <p class="text-secondary">Designation :- {{ staff.designation }}</p>
-            <p class="text-secondary">Contact :- {{ staff.contact }}</p>
-            <p class="text-secondary">Salary :- {{ staff.salary }}</p>
-            <p class="text-secondary">Acc No :- {{ staff.acc_no }}</p>
-            <p class="text-secondary">Bank Name :- {{ staff.bank_name }}</p>
-            <p class="text-secondary">IFSC Code :- {{ staff.IFSC }}</p>
-            <p class="text-secondary">Address :- {{ staff.address }}</p>
-            <!-- <p class="text-secondary">Added By :- {{ staff.manager.name }}</p> -->
+            <div class="media">
+                <div class="media-body">
+                     <h2 class="account-heading">{{ staff.name }}</h2>
+                        <p class="text-secondary">Staff ID&emsp;&emsp; &emsp; :-&emsp; {{ staff.staff_id }}<br>
+                                        Designation &emsp;     :-&emsp; {{ staff.designation }}<br>
+                                        Contact     &emsp;&emsp;&emsp;    :-&emsp; {{ staff.contact }}<br>
+                                        Salary&emsp;&emsp;&emsp;&emsp;    :-&emsp; {{ staff.salary }}<br>
+                                        Acc No       &emsp; &emsp;&emsp;   :-&emsp; {{ staff.acc_no }}<br>
+                                        Bank Name&emsp;&emsp;:-&emsp; {{ staff.bank_name }}<br>
+                                        IFSC Code   &emsp;&emsp;    :-&emsp; {{ staff.IFSC }}<br>
+                                        Address      &emsp;&emsp;&emsp;    :-&emsp; {{ staff.address }}
+        
+                            <form method='POST'  >
+                                {% csrf_token %}
+                                <input type="hidden" name="staff_id" value="{{ staff.staff_id }}">
+                                <input type="submit" value="DELETE" style="float: right;">
+                        </p>
+                </div>
             </div>
-        </div>
-            <!-- FORM HERE -->
         </div>
     {% endfor %}
 {% endblock content %}

@@ -1,18 +1,41 @@
 {% extends "mess/base.html" %}
 {% block content %}
-{% if flag == True %}
-<h1>This is Student Home</h1>
+{% if flag == 1 %}
+{% load static %}
+<h1 font color="white"><font color="white">This is Student Home</font></h1>
+<a class="nav-item nav-link" href="{% url 'add_feedback' %}" ><button>Add Feedback</button></a>
 {% endif %}
+<div class="watermark">
+
+
+
+<br>
+<h3><font color="white">Feedbacks</font> </h3>
+<br>
     {% for feedback in feedbacks %}
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ feedback.roll_number }}</a>
+              <a class="mr-2" href="#">{{ feedback.user }}</a>
               <small class="text-muted">{{ feedback.date_created }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ feedback.title }}</a></h2>
-            <p class="article-content">{{ feedback.content }}</p>
+            <h2><a class="article-title" href="#">{{ feedback.title }}</a>
+              <!-- {% if feedback.user == id and feedback.response == ""%} --> 
+              <!-- {% endif %} -->
+              {% if feedback.user == id %}
+                <form method='POST'  >
+                  {% csrf_token %}
+                  <input type="hidden" name="id" value="{{ feedback.id }}">
+                  <input type="submit" value="DELETE" style="float: right;">
+                </form> 
+              {% endif %}
+            </h2>
+            <p class="article-content">{{ feedback.content }}<br>
+            </p>
+            <p class="article-metadata" ></p>
+            <p class="article-metadata" > <b>Mess Manager Says</b> :- {{ feedback.response }}</p>
           </div>
         </article>
     {% endfor %}
 {% endblock content %}
+

@@ -1,0 +1,44 @@
+{% extends "mess/base.html" %}
+{% block content %}
+<h1 font color="white"><font color="white">Manage Feedbacks</font></h1>
+<h1></h1>
+    {% for feedback in feedbacks %}
+      <article class="media content-section">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ feedback.user }}</a>
+            <small class="text-muted">{{ feedback.date_created }}</small>
+          </div>
+          <h2><a class="article-title" href="#">{{ feedback.title }}</a></h2>
+            <p class="article-content">{{ feedback.content }}<br></p>
+            {% if feedback.response == "" %}
+            <form method='POST'>
+                {% csrf_token %}
+                <textarea type="text" name="response"></textarea><br>
+                <input type="hidden" name="fb_id" value="{{ feedback.id }}">
+                <input type="submit" value="Submit">
+            </form>
+            {% else %}
+              <p class="article-metadata" ></p>
+              <p class="article-metadata" > <b>Mess Manager Says</b> :- {{ feedback.response }}</p>
+            {% endif %}
+          
+        </div>
+      </article>
+
+
+
+        <!-- <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ feedback.user }}</a>
+              <small class="text-muted">{{ feedback.date_created }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ feedback.title }}</a></h2>
+            <p class="article-content">{{ feedback.content }}</p>
+            <p class="article-content">Mess Manager Says :-{{ feedback.response }}</p>
+            
+          </div>
+        </article> -->
+    {% endfor %}
+{% endblock content %}

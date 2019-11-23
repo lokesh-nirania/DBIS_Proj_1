@@ -1,0 +1,67 @@
+{% extends "mess/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<style>
+        table {
+            width:200%;
+        }
+        table, th, td {
+            border: 1px solid rgb(82, 78, 78);
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        table#t01 th {
+            background-color: rgb(46, 33, 33);
+            color: white;
+        }
+        table#t01 tr:nth-child(even) {
+            background-color: rgb(221, 221, 221);
+        }
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        
+    </style>
+<h4>  <a class="nav-item nav-link" href="{% url 'add_bill' %}"><button>Add Bills</button> 
+    <article class="media content-section">
+            <div class="media-body">
+    <h5><font class="article-title" color="white">Total Unpaid Bills : {{ unpaid_bills_count }} </font> </h5>
+    <h5><font class="article-title" color="white">Total Expenses : {{ expenses }} </font> </h5>
+    </div>
+    </article>
+        <table id="t01">
+            <tr>
+                <th>Bill ID</th>
+                <th>Amount </th> 
+                <th>Date</th>
+                <th>Status</th>
+                <!-- <th>Paid On</th> -->
+                <th>Toggle</th>
+            </tr>
+            {% for bill in bills %}
+                <tr>
+                    <td>{{ bill.bill_id }}</td>
+                    <td>{{ bill.amount }}</td>
+                    <td>{{ bill.date }} </td>
+                    <td>{{ bill.paid }}</td>
+                    <!-- <td>{{ bill.paid_on }}</td> -->
+                    <form method='POST'  >
+                        {% csrf_token %}
+                        <td>
+                            {% if bill.paid == False %}
+                                <input type="hidden" name="bill_id" value="{{ bill.bill_id }}">
+                                <input type="submit" value="TOGGLE" style="float: right;">
+                            {% else %}
+                                <input type="hidden" name="bill_id" value="{{ bill.bill_id }}">
+                                <input type="submit" value="TOGGLE" style="float: right;">
+                            {% endif %}
+                        </td>
+                    </form>
+                    
+                </tr>
+            {% endfor %}
+        </table>
+{% endblock content %}

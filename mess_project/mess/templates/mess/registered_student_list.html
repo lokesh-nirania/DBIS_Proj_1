@@ -1,18 +1,55 @@
 {% extends "mess/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Registered Students : {{ students.count }}</h1>
+<style>
+    table {
+      width:100%;
+    }
+    table, th, td {
+      border: 1px solid rgb(82, 78, 78);
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    table#t01 th {
+      background-color: rgb(46, 33, 33);
+      color: white;
+    }
+    table#t01 tr:nth-child(even) {
+      background-color: rgb(221, 221, 221);
+    }
+    table#t01 tr:nth-child(odd) {
+      background-color: #fff;
+    }
+
+</style>
+                
+        
+<div>
+<h3>Registered Students : {{ students.count }}</h3>
+
+        <table id="t01">
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th> 
+                  <th>Roll Number</th>
+                </tr>
     {% for student in students %}
-        <div class="content-section">
-        <div class="media">
-            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-            <div class="media-body">
-            <h2 class="account-heading">{{ student.name }}</h2>
-            <p class="text-secondary">Email :- {{ student.user.email }}</p>
-            <p class="text-secondary">Roll No :- {{ student.roll_number }}</p>
-            </div>
-        </div>
+        <!-- <div class="content-section">
+        <div class="media"> -->
+            <!-- <img class="rounded-circle account-img" src="{{ user.student.image.url }}"> -->
+            <!-- <div class="media-body"> --> 
+            <tr>    
+                    <td>{{ student.name }}</td>
+                    <td> {{ student.user.email }}</td>
+                    <td>{{ student.roll_number }}</td>
+        </tr>
+            <!-- </div>
+   </div> -->
             <!-- FORM HERE -->
-        </div>
+        
     {% endfor %}
+
 {% endblock content %}

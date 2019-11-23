@@ -17,7 +17,7 @@ ul {
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: rgb(229, 226, 226);
 }
 
 .site-header .navbar-nav .nav-link:hover {
@@ -52,7 +52,7 @@ a.article-title:hover {
 .article-img {
   height: 65px;
   width: 65px;
-  margin-right: 16px;
+  margin-right: 6px;
 }
 
 .article-metadata {
@@ -81,4 +81,26 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.watermark {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+  top:auto
+}
+
+.watermark::after {
+  content: "";
+ background:url(http://backgrounds4k.net/wp-content/uploads/2016/05/Fast-Food-uhd-background.jpg);
+  opacity: 1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;   
+  background-repeat: no-repeat;
+  background-size: cover;
 }
